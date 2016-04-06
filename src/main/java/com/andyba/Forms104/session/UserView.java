@@ -85,7 +85,7 @@ public class UserView {
         
         
         
-        Iterable<Person> persons = session.query(Person.class, "MATCH (p:Person) return p", Collections.<String, Object>emptyMap());
+        //Iterable<Person> persons = session.query(Person.class, "MATCH (p:Person) return p", Collections.<String, Object>emptyMap());
 
         /*
         for (Person per : persons) {
