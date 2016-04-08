@@ -31,10 +31,13 @@
                             <p>existe sesion</p>
                         </h:form>
 
-                        <p:messages closable="true  " id="msgs" />
-                        <p:commandButton value="Logout" action="#{loginSession.cerrarSesion()}" icon="ui-icon-check" />
+                        <p:messages closable="true" id="msgs" />
+                        
+                            <p:commandButton value="Logout" action="#{loginSession.cerrarSesion()}" icon="ui-icon-check" />
                     </c:when>
                     <c:otherwise>
+                        <p:messages closable="true" id="msgs2" />
+                        
                         <h:form>
                         <p>no existe sesion</p>
                         </h:form>
