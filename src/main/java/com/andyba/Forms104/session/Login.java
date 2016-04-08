@@ -9,6 +9,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
+import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -46,23 +47,24 @@ public class Login {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-        public String login()
-    {
-        if(user.equals("antonio") && password.equals("toni"))
-        {
+
+    public String login() {
+
+        if (user.equals("aa") && password.equals("aa")) {
             httpServletRequest.getSession().setAttribute("sessionUsuario", user);
-            facesMessage=new FacesMessage(FacesMessage.SEVERITY_INFO, "Acceso Correcto", null);
-            faceContext.addMessage(null, facesMessage);
+            facesMessage = new FacesMessage(FacesMessage.SEVERITY_INFO, "Acceso Correcto", null);
+
+            RequestContext.getCurrentInstance().showMessageInDialog(facesMessage);
+            // faceContext.addMessage(null, facesMessage);
+            //return null;
             return "/faces/index.xhtml?faces-redirect=true";
-        }
-        else
-        {
-            facesMessage=new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario o contraseña incorrecto", null);
-            faceContext.addMessage(null, facesMessage);
+        } else {
+            facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario o contraseña incorrecto", null);
+
+            RequestContext.getCurrentInstance().showMessageInDialog(facesMessage);
+            //  faceContext.addMessage(null, facesMessage);
             return null;
         }
     }
-        
 
 }

@@ -3,23 +3,49 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <body>
 
         <ui:composition template="./WEB-INF/resources/templates/chaptersTemplate.xhtml">
 
             <ui:define name="title">Welcome to Developing PrimeFaces Themes</ui:define>
-            
-          
+
+
 
             <ui:define name="content">
-                <p:commandButton value="Save" action="#{userView.save}" icon="ui-icon-check" />
+                <h:form>
+                    <p:commandButton value="Save" action="#{userView.save}" icon="ui-icon-check" />
+                </h:form>
+                <h:form>
+                    <p:commandButton value="MyButton" action="#{main.main}" icon="ui-icon-check" />
+                </h:form>
+                <c:choose>
+                    <c:when test="${loginSession.compruebaSesion() == true}">
 
-                <p:commandButton value="MyButton" action="#{main.main()}" icon="ui-icon-check" />
-                
-                
-                
+                        <h:form>
+
+
+                            <h:outputText value="#{loginSession.usuario}"/>
+                            <p>existe sesion</p>
+                        </h:form>
+
+                        <p:messages closable="true  " id="msgs" />
+                        <p:commandButton value="Logout" action="#{loginSession.cerrarSesion()}" icon="ui-icon-check" />
+                    </c:when>
+                    <c:otherwise>
+                        <h:form>
+                        <p>no existe sesion</p>
+                        </h:form>
+                    </c:otherwise>
+                </c:choose>
+
+
+
+
+
+
             </ui:define>
 
         </ui:composition>
