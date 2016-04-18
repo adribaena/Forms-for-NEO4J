@@ -10,14 +10,12 @@ import java.util.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
-/**
- *
- * @author Antonio
- */
 
 @ManagedBean@ApplicationScoped
 public class ThemesService {
 
+
+    //este atributo no se usa por ahora.
     private static final Logger logger = Logger.getLogger(ThemesService.class.getName());
 
             private final String[] themes = {"afterdark",

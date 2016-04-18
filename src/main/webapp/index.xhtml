@@ -10,48 +10,37 @@
 
         <ui:composition template="./WEB-INF/resources/templates/chaptersTemplate.xhtml">
 
-            <ui:define name="title">Welcome to Developing PrimeFaces Themes</ui:define>
-
+            <ui:define name="title">Welcome to our new 104 website</ui:define>
 
 
             <ui:define name="content">
+                
                 <h:form>
-                    <p:commandButton value="Save" action="#{userView.save}" icon="ui-icon-check" />
+                    <p:commandButton value="Run First this button" action="#{main.main}"/>
                 </h:form>
+                <br/>
                 <h:form>
-                    <p:commandButton value="MyButton" action="#{main.main}" icon="ui-icon-check" />
+                    <p:commandButton value="Crear usuario de prueba vacío" action="#{userView.save}" icon="ui-icon-check" disabled="True"/>
                 </h:form>
+
                 <c:choose>
                     <c:when test="${loginSession.compruebaSesion() == true}">
-
                         <h:form>
-
-
-                            <h:outputText value="#{loginSession.usuario}"/>
+                            <br/>
+                            <h:outputText value="hola : #{loginSession.usuario}"/>
                             <p>existe sesion</p>
                         </h:form>
-
-                        <p:messages closable="true" id="msgs" />
-                        
                             <p:commandButton value="Logout" action="#{loginSession.cerrarSesion()}" icon="ui-icon-check" />
                     </c:when>
-                    <c:otherwise>
-                        <p:messages closable="true" id="msgs2" />
-                        
+                    <c:otherwise>   
                         <h:form>
                         <p>no existe sesion</p>
                         </h:form>
-                    </c:otherwise>
+                    </c:otherwise>                    
                 </c:choose>
 
-
-
-
-
-
+                <p:growl id="mensajes" showDetail="true" globalOnly="true" life="4000" />
             </ui:define>
-
         </ui:composition>
-
     </body>
 </html>

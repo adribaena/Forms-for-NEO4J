@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.mycompany.ibis1;
 
 import com.mycompany.ibis1.nodes.Antecedent;
@@ -31,6 +32,7 @@ import com.mycompany.ibis1.nodes.ClinicalCriteria;
 import com.mycompany.ibis1.nodes.MotorExaminationSymptom;
 import com.mycompany.ibis1.nodes.Symptom;
 import com.mycompany.ibis1.relationship.HasAntecedent;
+import com.mycompany.ibis1.services.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
@@ -42,10 +44,7 @@ import org.neo4j.ogm.session.Session;
 import org.neo4j.ogm.session.SessionFactory;
 import org.neo4j.ogm.session.result.Result;
 
-/**
- *
- * @author khabarak-PC
- */
+
 @ManagedBean
 public class Main {
 
@@ -68,7 +67,7 @@ public class Main {
         return parsedDate;
     }
 
-    public static void main(String[] args) {
+    public void main() {
         // Create SessionFactory. Pass the package name of the entity classes as
         // the argument.
 
@@ -76,6 +75,7 @@ public class Main {
 
         // Create the session
         Session session = sessionFactory.openSession(NEO4J_URL, USERNAME, PASSWORD);
+        
 
         Iterable<Person> persons = session.query(Person.class, "MATCH (p:Person) return p", Collections.<String, Object>emptyMap());
 
@@ -88,10 +88,25 @@ public class Main {
 
 
         pepe.setId_person("10");
-        pepe.setNhc("123456789");
-        pepe.setName("Pepreeerer");
+        pepe.setNhc("PRUEBA");
+        pepe.setName("PRUEBA");
         session.save(pepe);
-
+        
+        
+        PersonServiceImpl mario = new PersonServiceImpl();
+        
+         //= mario.getPerson();
+        Session misesion = Neo4jSessionFactory.getInstance().getNeo4jSession();
+        
+        
+        String query = "match n return n";
+        Iterable<Map<String,Object>> personas =  Neo4jSessionFactory.getInstance().getNeo4jSession().query(query, Collections.EMPTY_MAP);
+        
+        
+        
+        
+        System.out.println(personas);
+        
 
         /*
         

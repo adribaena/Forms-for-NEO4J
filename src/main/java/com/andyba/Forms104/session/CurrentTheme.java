@@ -15,7 +15,7 @@ import javax.faces.context.FacesContext;
 
 /**
  *
- * @author Antonia
+ * @author Antonio
  */
 @ManagedBean
 @SessionScoped
@@ -28,7 +28,7 @@ public class CurrentTheme implements Serializable {
         
     }
         
-    private String theme = "aristo";
+    private String theme = "ui-lightness";
 
     /**
      * Get the value of theme
@@ -39,15 +39,12 @@ public class CurrentTheme implements Serializable {
         return theme;
     }
 
-    /**
-     * Set the value of theme
-     *
-     * @param theme new value of theme
-     */
+
     public void setTheme(String theme) {
         this.theme = theme;
     }
     
+    //este metodo no se usa por ahora, IGNORAR
     public void obtenermapa() {
         
         FacesContext context = FacesContext.getCurrentInstance();
@@ -59,12 +56,6 @@ public class CurrentTheme implements Serializable {
     
     }
 
-
-    /**
-     * Get the value of themes
-     *
-     * @return the value of themes
-     */
 
 
 
