@@ -86,7 +86,7 @@ public class Main {
         Person pepe = new Person();
 
 
-
+ 
         pepe.setId_person("10");
         pepe.setNhc("PRUEBA");
         pepe.setName("PRUEBA");
