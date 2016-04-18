@@ -91,7 +91,7 @@ public class Main {
         pepe.setNhc("PRUEBA");
         pepe.setName("PRUEBA");
         session.save(pepe);
-        
+         
         
         PersonServiceImpl mario = new PersonServiceImpl();
         
