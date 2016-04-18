@@ -105,7 +105,7 @@ public class Main {
         
         
         
-        System.out.println(personas);
+        System.out.println("las personas son : " + personas);
         
 
         /*
