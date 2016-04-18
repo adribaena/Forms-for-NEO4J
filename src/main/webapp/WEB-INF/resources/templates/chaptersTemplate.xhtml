@@ -13,7 +13,7 @@
                 <h:outputStylesheet library="css" name="default.css"/>
             </f:facet>
             <title>
-                <ui:insert name="title">Please add a proper title for this page!</ui:insert>
+                <ui:insert name="title">Styles of the Page</ui:insert>
             </title>
         </h:head>
         <h:body>
@@ -21,17 +21,13 @@
                 <p:menubar id="navBar">
                     <p:menuitem id="home" value="Home" url="/faces/index.xhtml"/>
                     <p:submenu id="menu" label="Menu">
-                        <p:menuitem id="c1" value="Create node"                 url="/faces/chapter2/difference.xhtml"/>
-                        <p:menuitem id="c2" value="more Components"                 url="/faces/chapter2/moreComponents.xhtml"/>
-                        <p:menuitem id="c3" value="log into the website"                 url="/faces/chapter2/login.xhtml"/>
-
-
+                        <p:menuitem id="c1" value=" (DEMO) more Components"  url="/faces/firstMenu/demoComponents.xhtml"/>
+                        <p:menuitem id="c2" value="log into the website"  url="/faces/firstMenu/login.xhtml"/>
                     </p:submenu>
 
-                    <p:submenu id="chapter4" label="Options">
-                        <p:menuitem id="c4index" value="Text Editor" url="/faces/chapter4/index.xhtml"/>
-                        <p:menuitem id="c4andPFInput" value="DEMO Create form User" url="/faces/chapter4/withPFEquivalent.xhtml"/>
-                        <p:menuitem id="c4standardWithPFThemes" value="Video" url="/faces/chapter4/standardJSFWithPFThemes.xhtml"/>
+                    <p:submenu id="menuDemo" label="Options">
+                        <p:menuitem id="c4andPFInput" value="create new Account" url="/faces/secondMenu/createnewAccount.xhtml"/>
+                        <p:menuitem id="c4standardWithPFThemes" value="create new Person" url="/faces/secondMenu/createNodePerson.xhtml"/>
                     </p:submenu>
                     <f:facet name="options">
                         <h:outputText value="Current theme: " style="vertical-align: top;"/>

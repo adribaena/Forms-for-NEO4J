@@ -8,6 +8,7 @@ package com.andyba.Forms104.session;
 import static com.mycompany.ibis1.Main.NEO4J_URL;
 import static com.mycompany.ibis1.Main.PASSWORD;
 import static com.mycompany.ibis1.Main.USERNAME;
+import com.mycompany.ibis1.Sesion;
 import com.mycompany.ibis1.nodes.Person;
 import java.util.Collections;
 import javax.faces.application.FacesMessage;
@@ -47,55 +48,25 @@ public class UserView {
     }
 
     public String save() {
-
-        /*RequestContext context = RequestContext.getCurrentInstance();
-        String cosa =  firstname + " , " + lastname;
-        boolean loggedIn = true;
-        FacesMessage message = null;
-        message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome ", cosa); 
         
-        FacesContext.getCurrentInstance().addMessage(null,message);
-        context.addCallbackParam("loggedIn", loggedIn);
-         */
-        RequestContext context = RequestContext.getCurrentInstance();
-        Person p = new Person();
-        p.setId_person("23432");
-        p.setNhc("1235659");
+        Person p = new Person();   
+        p.setNhc(lastname);
         p.setName(firstname);
-        String j = "ga";
-
-        j = p.getId_person();
-
-        // FacesContext.getCurrentInstance().addMessage(null,
-        //       new FacesMessage("Welcome " + firstname + " " + j));// + p.getName()));
-        String cosa = firstname + " , con id =  " + j;
-        boolean loggedIn = true;
-        FacesMessage message = null;
-        message = new FacesMessage("Welcome ", cosa);
-
+        FacesMessage message = new FacesMessage("Welcome ", p.getName());
         FacesContext.getCurrentInstance().addMessage(null, message);
-
-        SessionFactory sessionFactory = new SessionFactory("com.mycompany.ibis1");
-
-        // Create the session
-        Session session = sessionFactory.openSession(NEO4J_URL, USERNAME, PASSWORD);
-
+        Session session = Sesion.getSession();
         session.save(p);
         
-        
-        
-        
+        //esto queda descartado
+        /*  
         Iterable<Person> persons = session.query(Person.class, "MATCH (p:User) return p", Collections.<String, Object>emptyMap());
 
         
         for (Person per : persons) {
             System.out.println(per.getName());
         }
-        
-
-        //context.addCallbackParam("loggedIn", loggedIn);
-        
-        
+        */
+              
         return "/faces/index.xhtml?faces-redirect=true";
 
     }

@@ -17,6 +17,11 @@ import java.util.Map;
  */
 //@Service("personService")
 public class PersonServiceImpl extends GenericService<Person> implements PersonService {
+
+    public PersonServiceImpl() {
+        super();
+    }  
+    
     
     @Override
     public Iterable<Map<String,Object>> getPerson() {

@@ -40,5 +40,6 @@ public abstract class GenericService<T> implements Service<T> {
         return find(((Entity) entity).getId());
     }
 
+    
     public abstract Class<T> getEntityType();
 }

@@ -19,18 +19,24 @@ import org.primefaces.context.RequestContext;
 @RequestScoped
 @ManagedBean
 public class LoginSession {
-
+   
+    //disponemos de un atributo que identifica al usuario logueado
     private String usuario;
+    //tenemos además un backbean para obtener información de una vista o de otro bean
     private final FacesContext facesContext;
+    //declaramos un objeto para el manejo del servidor y poder comprobar en cada acceso a una página si estamos logueados
     private final HttpServletRequest httpServletRequest;
-    private FacesMessage message;
+    //finalmente un boolean que compruebe si estamos logueados
     private boolean compruebaSesion = false;
 
     public LoginSession() {
 
         facesContext = FacesContext.getCurrentInstance();
         httpServletRequest = (HttpServletRequest) facesContext.getExternalContext().getRequest();
+        
+        //si estamos logueados, es porque en la HttpServletRequest hemos guardado un atributo sessionUsuario con el nombre del ususario
         if (httpServletRequest.getSession().getAttribute("sessionUsuario") != null) {
+            //actualizamos el valor del usuario en el constructor
             usuario = httpServletRequest.getSession().getAttribute("sessionUsuario").toString();
         }
     }
@@ -52,25 +58,15 @@ public class LoginSession {
     }
 
     public boolean compruebaSesion() {
-
-        compruebaSesion = httpServletRequest.getSession().getAttribute("sessionUsuario") != null;
-
-        if (compruebaSesion == true) {
-
-            message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Acceso Correcto", null);
-
-            //RequestContext.getCurrentInstance().showMessageInDialog(message);
-
-            facesContext.addMessage(null, message);
-        }
-        return compruebaSesion;
+        //devuelve true si el atributo sessionUsuario existe
+        return httpServletRequest.getSession().getAttribute("sessionUsuario") != null;
     }
 
     public String cerrarSesion() {
 
+        //destruye el atributo sessionUsuario del la petición httpServletRequest
         httpServletRequest.getSession().removeAttribute("sessionUsuario");
-       // message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Session cerrada correctamente", null);
-        //facesContext.addMessage(null, message);
+        //nos redirigimos a la web principal, gracias al faces-redirect=true
         return "/faces/index.xhtml?faces-redirect=true";
     }
 
