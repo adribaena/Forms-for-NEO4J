@@ -20,10 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.neo4j.ogm.session.Session;
 import org.primefaces.context.RequestContext;
 
-/**
- *
- * @author Antonia
- */
+
 @ManagedBean
 public class Login {
 

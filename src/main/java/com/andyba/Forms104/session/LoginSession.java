@@ -34,6 +34,7 @@ public class LoginSession {
         facesContext = FacesContext.getCurrentInstance();
         httpServletRequest = (HttpServletRequest) facesContext.getExternalContext().getRequest();
         
+        // System.out.println(httpServletRequest.getSession().getAttribute("sessionUsuario"));
         //si estamos logueados, es porque en la HttpServletRequest hemos guardado un atributo sessionUsuario con el nombre del ususario
         if (httpServletRequest.getSession().getAttribute("sessionUsuario") != null) {
             //actualizamos el valor del usuario en el constructor

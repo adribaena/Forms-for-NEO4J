@@ -5,7 +5,8 @@
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
     xmlns:p="http://primefaces.org/ui"
-    xmlns:f="http://xmlns.jcp.org/jsf/core">
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <f:view contentType="text/html" encoding="UTF-8">
         <h:head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -22,11 +23,17 @@
                     <p:menuitem id="home" value="Home" url="/faces/index.xhtml"/>
                     <p:submenu id="menu" label="Menu">
                         <p:menuitem id="c1" value=" (DEMO) more Components"  url="/faces/firstMenu/demoComponents.xhtml"/>
-                        <p:menuitem id="c2" value="log into the website"  url="/faces/firstMenu/login.xhtml"/>
+                        <c:choose>
+                            <c:when test="${loginSession.compruebaSesion() == false}">
+                                 <p:menuitem id="c2" value="log into the website"  url="/faces/firstMenu/login.xhtml"/>
+                            </c:when>
+                            <c:otherwise>                               
+                            </c:otherwise>                    
+                            </c:choose>     
                     </p:submenu>
 
                     <p:submenu id="menuDemo" label="Options">
-                        <p:menuitem id="c4andPFInput" value="create new Account" url="/faces/secondMenu/createnewAccount.xhtml"/>
+                        <p:menuitem id="c4andPFInput" value="create new Account" url="/faces/secondMenu/createNewAccount.xhtml"/>
                         <p:menuitem id="c4standardWithPFThemes" value="create new Person" url="/faces/secondMenu/createNodePerson.xhtml"/>
                     </p:submenu>
                     <f:facet name="options">

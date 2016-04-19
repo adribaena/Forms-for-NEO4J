@@ -11,7 +11,7 @@
         <ui:composition template="./../WEB-INF/resources/templates/chaptersTemplate.xhtml">
 
             <ui:define name="title">
-                title
+                Create a new User
             </ui:define>
 
             <ui:define name="content">
@@ -20,22 +20,42 @@
                     <p:panel id="panel" header="New User">
 
                         <p:messages id="msgs" />
-
-                        <h:panelGrid columns="3" cellpadding="5">
-                            <p:outputLabel for="firstname" value="Firstname:" />
-                            <p:inputText id="firstname" value="#{userView.firstname}" required="true" label="Firstname">
-                                <f:validateLength minimum="2" />
-                                <p:ajax update="msgFirstname" event="keyup" />
+                        
+                        <h:panelGrid columns="2" cellpadding="5">
+                            
+                             <p:outputLabel for="name" value="Name :" />
+                            <p:inputText id="name" value="#{userView.name}" required="true" label="Name :">
                             </p:inputText>
-                            <p:message for="firstname" id="msgFirstname" display="icon" />
+                            
 
-                            <p:outputLabel for="lastname" value="Nhc:" />
-                            <p:inputText id="lastname" value="#{userView.lastname}" label="Lastname" required="true">
-                                <f:validateLength minimum="2" />
-                                <p:ajax update="msgLastname" event="keyup" />
+                            <p:outputLabel for="first_surname" value="First surname :" />
+                            <p:inputText id="first_surname" value="#{userView.first_surname}" label="first_surname :">
                             </p:inputText>
-                            <p:message for="lastname" id="msgLastname" display="icon" />
-
+                            
+                            <p:outputLabel for="second_surname" value="Second surname :" />
+                            <p:inputText id="second_surname" value="#{userView.second_surname}" label="second_surname :">
+                            </p:inputText>
+                                
+                            <p:outputLabel for="nhc" value="nhc :" />
+                            <p:inputText id="nhc" value="#{userView.nhc}" label="nhc :">
+                            </p:inputText>
+                            
+                            <p:outputLabel for="genre" value="genre:" />
+                            <p:inputText id="genre" value="#{userView.genre}" label="genre :">
+                            </p:inputText>                        
+                            
+                            <p:outputLabel for="race" value="race :" />
+                            <p:inputText id="race" value="#{userView.race}" label="race">
+                            </p:inputText>
+                                                        
+                            <p:outputLabel for="telephone" value="telephone :" />
+                            <p:inputText id="telephone" value="#{userView.telephone}" label="telephone :">                    
+                            </p:inputText>
+                            
+                            <p:outputLabel for="exitus" value="exitus :" />
+                            <p:inputText id="exitus" value="#{userView.exitus}" label="exitus :">
+                            </p:inputText>                          
+                            
                         </h:panelGrid>
 
                         <p:commandButton value="Save" update="panel" action="#{userView.save}" icon="ui-icon-check" />
